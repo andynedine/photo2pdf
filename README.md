@@ -1,7 +1,10 @@
 # Photo2PDF
 
 ¡Bienvenido a **Photo2PDF**!  
-Photo2PDF es una herramienta sencilla y práctica que te permite convertir imágenes en un documento PDF con facilidad. Subiendo tus capturas o imágenes, podrás organizarlas como desees y generar un archivo PDF listo para descargar.
+Photo2PDF es una herramienta sencilla y práctica creada por la necesidad de proteger la privacidad de la información personal y sensible, y que te permite convertir imágenes en un documento PDF con facilidad. 
+Muchas herramientas online convierten imágenes en PDF, pero implican el riesgo de que las capturas sean almacenadas o utilizadas por terceros.
+Por eso, Photo2PDF se diseñó para funcionar directamente en tu navegador, sin almacenar nada en servidores externos. 
+Sube tus capturas o imágenes, organízalas como prefieras y genera un archivo PDF con un solo clic listo para descargar.
 
 ---
 
