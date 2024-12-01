@@ -1,44 +1,37 @@
-# Convertidor de Imágenes a PDF 📄
+# Photo2PDF
 
-Esta es una aplicación web simple que permite subir una o más imágenes y convertirlas en un archivo PDF descargable. Ideal para escanear documentos o fotos utilizando la cámara de tu dispositivo móvil.
+¡Bienvenido a **Photo2PDF**!  
+Photo2PDF es una herramienta sencilla y práctica que te permite convertir imágenes en un documento PDF con facilidad. Subiendo tus capturas o imágenes, podrás organizarlas como desees y generar un archivo PDF listo para descargar.
 
-## Características 🚀
+---
 
-- **Subida de imágenes múltiples**: Puedes seleccionar una o más imágenes desde tu dispositivo.
-- **Conversión a PDF**: Combina las imágenes seleccionadas en un único archivo PDF.
-- **Previsualización en tiempo real**: Muestra las imágenes seleccionadas antes de generar el PDF.
-- **Fácil de usar**: Interfaz intuitiva y sencilla.
+## 🚀 Funcionalidades principales
 
-## Tecnologías utilizadas 🛠️
+- **Sube múltiples imágenes**: Soporte para subir varias imágenes a la vez.
+- **Organización intuitiva**: Ordena las imágenes mediante arrastrar y soltar, o usa los botones de navegación para ajustarlas a tu preferencia.
+- **Vista previa**: Previsualiza las imágenes subidas con miniaturas enumeradas.
+- **Exportación rápida**: Genera un archivo PDF que incluye todas las imágenes en el orden establecido.
+- **Nombre inteligente**: El nombre del PDF exportado se genera a partir del nombre de la primera imagen subida.
 
-- **HTML5**: Estructura de la página.
-- **CSS3**: Estilo responsivo y moderno.
-- **JavaScript**: Lógica de la aplicación.
-- **[jsPDF](https://github.com/parallax/jsPDF)**: Generación de archivos PDF en el navegador.
+---
 
-## Capturas de pantalla 📸
+## 🛠️ Tecnologías utilizadas
 
-### Vista principal:
-![Interfaz principal](https://github.com/andynedine/photo2pdf/blob/main/capture.png)
+- **Frontend**:
+  - HTML5, CSS3, JavaScript (sin frameworks adicionales).
+- **Librería para PDF**:
+  - [jsPDF](https://github.com/parallax/jsPDF): Librería ligera para generar PDFs directamente en el navegador.
 
-## Cómo usarlo 🔧
+---
 
-1. Clona este repositorio:
-    ```bash
-    git clone https://github.com/andynedine/photo2pdf.git
-    cd photo2pdf
-    ```
-2. Abre el archivo `index.html` en tu navegador.
+## 📋 Instrucciones de uso
 
-3. Sube una o más imágenes utilizando el botón de carga.
+1. **Descarga el proyecto**:  
+   Clona este repositorio o descarga los archivos directamente.
 
-4. Haz clic en "Convertir a PDF" para descargar tu archivo PDF.
+   ```bash
+   git clone https://github.com/andynedine/photo2pdf.git
 
-## Próximas mejoras 🌟
-
-- Soporte para ajustar el orden de las imágenes.
-- Posibilidad de añadir títulos o texto a cada página del PDF.
-- Mejor manejo de errores y validación de entradas.
 
 ## Contribuciones 🤝
 
