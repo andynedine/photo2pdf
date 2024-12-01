@@ -1,56 +1,101 @@
-document.getElementById('convertButton').addEventListener('click', async () => {
-    const imageInput = document.getElementById('imageInput');
-    const files = imageInput.files;
-
-    if (files.length === 0) {
-        alert('Por favor, sube al menos una imagen.');
-        return;
-    }
-
-    const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF();
-
-    for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        const imageData = await fileToDataURL(file);
-        const img = new Image();
-        img.src = imageData;
-
-        await new Promise((resolve) => {
-            img.onload = () => {
-                const imgWidth = pdf.internal.pageSize.getWidth();
-                const imgHeight = (img.height / img.width) * imgWidth;
-
-                if (i > 0) pdf.addPage();
-                pdf.addImage(img, 'JPEG', 0, 0, imgWidth, imgHeight);
-                resolve();
-            };
-        });
-    }
-
-    pdf.save('documento.pdf');
-});
-
-document.getElementById('imageInput').addEventListener('change', () => {
-    const previewContainer = document.getElementById('previewContainer');
-    previewContainer.innerHTML = '';
-
-    Array.from(document.getElementById('imageInput').files).forEach(file => {
+document.addEventListener('DOMContentLoaded', () => {
+    const imageInput = document.getElementById('image-input');
+    const previewArea = document.getElementById('preview-area');
+    const generatePdfButton = document.getElementById('generate-pdf');
+    let imageFiles = [];
+  
+    imageInput.addEventListener('change', (e) => {
+      previewArea.innerHTML = '';
+      imageFiles = Array.from(e.target.files);
+  
+      imageFiles.forEach((file, index) => {
         const reader = new FileReader();
-        reader.onload = (e) => {
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            previewContainer.appendChild(img);
+        reader.onload = () => {
+          // Contenedor para cada imagen y su número
+          const previewItem = document.createElement('div');
+          previewItem.classList.add('preview-item');
+  
+          // Miniatura de imagen
+          const img = document.createElement('img');
+          img.src = reader.result;
+          img.dataset.index = index;
+          img.draggable = true;
+  
+          // Número de página
+          const pageNumber = document.createElement('span');
+          pageNumber.classList.add('page-number');
+          pageNumber.textContent = `Página ${index + 1}`;
+  
+          // Añadir eventos drag-and-drop
+          img.addEventListener('dragstart', handleDragStart);
+          img.addEventListener('dragover', handleDragOver);
+          img.addEventListener('drop', handleDrop);
+  
+          previewItem.appendChild(img);
+          previewItem.appendChild(pageNumber);
+          previewArea.appendChild(previewItem);
         };
         reader.readAsDataURL(file);
+      });
     });
-});
-
-function fileToDataURL(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (event) => resolve(event.target.result);
-        reader.onerror = (error) => reject(error);
-        reader.readAsDataURL(file);
+  
+    // Generar PDF
+    generatePdfButton.addEventListener('click', () => {
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF();
+      let fileName = '';
+  
+      imageFiles.forEach((file, index) => {
+        const img = previewArea.querySelectorAll('img')[index];
+        pdf.addImage(img.src, 'JPEG', 10, 10, 190, 0);
+        if (index < imageFiles.length - 1) pdf.addPage();
+        fileName = fileName || file.name.split('.')[0];
+      });
+  
+      pdf.save(`${fileName || 'document'}.pdf`);
     });
-}
+  
+    // Drag-and-drop
+    function handleDragStart(e) {
+      e.dataTransfer.setData('text/plain', e.target.dataset.index);
+    }
+  
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.target.style.border = '2px dashed #007bff';
+    }
+  
+    function handleDrop(e) {
+      e.preventDefault();
+      const draggedIndex = e.dataTransfer.getData('text/plain');
+      const targetIndex = e.target.dataset.index;
+      [imageFiles[draggedIndex], imageFiles[targetIndex]] = [
+        imageFiles[targetIndex],
+        imageFiles[draggedIndex],
+      ];
+  
+      previewArea.innerHTML = '';
+      imageFiles.forEach((file, index) => {
+        const previewItem = document.createElement('div');
+        previewItem.classList.add('preview-item');
+  
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        img.dataset.index = index;
+        img.draggable = true;
+  
+        const pageNumber = document.createElement('span');
+        pageNumber.classList.add('page-number');
+        pageNumber.textContent = `Página ${index + 1}`;
+  
+        img.addEventListener('dragstart', handleDragStart);
+        img.addEventListener('dragover', handleDragOver);
+        img.addEventListener('drop', handleDrop);
+  
+        previewItem.appendChild(img);
+        previewItem.appendChild(pageNumber);
+        previewArea.appendChild(previewItem);
+      });
+    }
+  });
+  

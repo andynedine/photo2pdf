@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convertir Imágenes a PDF</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo2PDF</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Escanea y Convierte a PDF</h1>
-        <p>Sube una o más imágenes para convertirlas en un documento PDF.</p>
-        <input type="file" id="imageInput" accept="image/*" multiple>
-        <button id="convertButton">Convertir a PDF</button>
-        <div id="previewContainer"></div>
+  <div class="container">
+    <h1>Photo2PDF</h1>
+    <p>
+      Bienvenido a Photo2PDF, una herramienta sencilla y práctica para convertir tus imágenes en un archivo PDF. 
+      Sube tus imágenes, organízalas como prefieras y genera un documento PDF con un solo clic. 
+      Ideal para compartir presentaciones, informes o recuerdos en formato digital.
+    </p>
+    <div class="upload-area">
+      <input type="file" id="image-input" accept="image/*" multiple>
+      <label for="image-input">Seleccionar imágenes</label>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <script src="script.js"></script>
+    <div id="preview-area"></div>
+    <button id="generate-pdf">Generar PDF</button>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
