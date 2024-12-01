@@ -19,7 +19,7 @@ Esta es una aplicación web simple que permite subir una o más imágenes y conv
 ## Capturas de pantalla 📸
 
 ### Vista principal:
-![Interfaz principal](https://via.placeholder.com/400x300?text=Captura+de+pantalla)
+![Interfaz principal](https://github.com/andynedine/photo2pdf/blob/main/capture.png)
 
 ## Cómo usarlo 🔧
 
