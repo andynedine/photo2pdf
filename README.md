@@ -8,7 +8,7 @@ Photo2PDF es una herramienta sencilla y práctica que te permite convertir imág
 ## 🚀 Funcionalidades principales
 
 - **Sube múltiples imágenes**: Soporte para subir varias imágenes a la vez.
-- **Organización intuitiva**: Ordena las imágenes mediante arrastrar y soltar, o usa los botones de navegación para ajustarlas a tu preferencia.
+- **Organización intuitiva**: Ordena las imágenes mediante arrastrar y soltar,intercambiando así las posiciones de los ficheros.
 - **Vista previa**: Previsualiza las imágenes subidas con miniaturas enumeradas.
 - **Exportación rápida**: Genera un archivo PDF que incluye todas las imágenes en el orden establecido.
 - **Nombre inteligente**: El nombre del PDF exportado se genera a partir del nombre de la primera imagen subida.
